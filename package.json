@@ -1,0 +1,31 @@
+{
+  "name": "car-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --delay 200ms --exec \"npm run clear && ts-node src/app.ts\"",
+    "clear": "echo \"server is restart\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/better-sqlite3": "^7.6.3",
+    "@types/koa": "^2.13.5",
+    "better-sqlite3": "^8.1.0",
+    "koa": "^2.14.1",
+    "ts-node": "^10.9.1",
+    "typeorm": "^0.3.12",
+    "typescript": "^4.9.5"
+  },
+  "devDependencies": {
+    "@types/koa-bodyparser": "^4.3.10",
+    "@types/koa-router": "^7.4.4",
+    "class-validator": "^0.14.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^12.0.0",
+    "nodemon": "^2.0.20",
+    "sqlite3": "5.0.0"
+  }
+}
