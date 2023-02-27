@@ -1,4 +1,3 @@
-import { getConnection } from "typeorm";
 import AppDataSource from "../db";
 import { User } from "../entities/User";
 
@@ -25,5 +24,6 @@ useRouter.post("/create", async (ctx, next) => {
 
   ctx.body = err || res;
 });
+
 
 export default useRouter;

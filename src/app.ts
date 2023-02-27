@@ -1,13 +1,15 @@
 import Koa from "koa";
 import router from "./routes";
-// import AppDataSource from "./db";
-import { User } from "./entities/User";
 import AppDataSource from "./db";
-// import db from "./db";
 import bodyParser from "koa-bodyparser";
-const app = new Koa();
+import serve from "koa-static";
+import path from "path";
 
-app.use(bodyParser());
+const app = new Koa();
+const staticPath = path.resolve(__dirname, "../public");
+app.use(serve(staticPath));
+
+app.use(bodyParser({}));
 
 const main = async () => {
   // 初始化数据库

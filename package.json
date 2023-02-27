@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --delay 200ms --exec \"npm run clear && ts-node src/app.ts\"",
-    "clear": "echo \"server is restart\""
+    "dev": "nodemon src/app.ts"
   },
   "keywords": [],
   "author": "",
@@ -13,8 +12,11 @@
   "dependencies": {
     "@types/better-sqlite3": "^7.6.3",
     "@types/koa": "^2.13.5",
+    "@types/node": "^18.14.2",
     "better-sqlite3": "^8.1.0",
     "koa": "^2.14.1",
+    "koa-body": "^6.0.1",
+    "koa-static": "^5.0.0",
     "ts-node": "^10.9.1",
     "typeorm": "^0.3.12",
     "typescript": "^4.9.5"
@@ -22,6 +24,7 @@
   "devDependencies": {
     "@types/koa-bodyparser": "^4.3.10",
     "@types/koa-router": "^7.4.4",
+    "@types/koa-static": "^4.0.2",
     "class-validator": "^0.14.0",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^12.0.0",
