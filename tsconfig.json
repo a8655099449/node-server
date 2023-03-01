@@ -7,13 +7,14 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "sourceMap": true,
+    "noEmitOnError": false,
     "typeRoots": [
-      "./src/@types"
+      "./src/@types/global.d.ts"
     ]
   },
   "include": [
-    "src/**/*"
-, "src/@types/global.d.tsglobal.d.ts"  ],
+    "src/**/*.ts",
+  ],
   "exclude": [
     "node_modules"
   ],

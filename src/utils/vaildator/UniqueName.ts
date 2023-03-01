@@ -24,15 +24,17 @@ export class IsUniqueConstraint implements ValidatorConstraintInterface {
   defaultMessage(args: ValidationArguments) {
     return `${args.property} already exists`;
   }
+
 }
 
-export function IsUnique(entityClass: Function, propertyName: string) {
+
+export function IsUnique(entityClass: Function, propertyName: string, name:string) {
   return function (object: Object, propertyName: string) {
     registerDecorator({
       target: object.constructor,
       propertyName: propertyName,
       options: {
-        message: `${propertyName} already exists`,
+        message: `${name} 已存在`,
       },
       constraints: [entityClass, propertyName],
       validator: IsUniqueConstraint,
