@@ -39,16 +39,39 @@ export class User extends DefaultColumn {
   })
   token: string;
 
+  @Column({
+    default: "",
+  })
+  birthday: Date;
+
+  @Column({
+    default: 2,
+    enum: [0, 1, 2],
+  }) // 0 男 1 女 2 未知
+  gender: number;
+
   toApi() {
-    const { name, id, avatar } = this;
+    // 1. Extract the values from the object
+    const { name, id, avatar, createTime } = this;
+ 
+    // 2. Return an object with the values
     return {
       name,
       id,
-      avatar
+      avatar,
+      createTime,
     };
   }
 }
 
+// This function returns a query builder for the user repository. It does this by getting the repository from the AppDataSource, and then creating a query builder from that repository.
+// The query builder is used to create queries for the user repository.
 export const userQuery = () => {
-  return AppDataSource.getRepository(User).createQueryBuilder("user");
+  const repo = AppDataSource.getRepository(User);
+  if (!repo) {
+    throw new Error("User repository not found");
+  }
+
+  return repo.createQueryBuilder("user");
 };
+
