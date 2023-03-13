@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, EntityTarget } from "typeorm";
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  EntityTarget,
+  FindOneOptions,
+} from "typeorm";
 
 import { Length } from "class-validator";
 import AppDataSource from "../db";
@@ -53,7 +59,6 @@ export class User extends DefaultColumn {
   toApi() {
     // 1. Extract the values from the object
     const { name, id, avatar, createTime } = this;
- 
     // 2. Return an object with the values
     return {
       name,
@@ -62,6 +67,8 @@ export class User extends DefaultColumn {
       createTime,
     };
   }
+
+ 
 }
 
 // This function returns a query builder for the user repository. It does this by getting the repository from the AppDataSource, and then creating a query builder from that repository.
@@ -74,4 +81,3 @@ export const userQuery = () => {
 
   return repo.createQueryBuilder("user");
 };
-

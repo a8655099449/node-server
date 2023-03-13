@@ -5,10 +5,13 @@ import bodyParser from "koa-bodyparser";
 import serve from "koa-static";
 import path from "path";
 import { failResponse } from "./utils/response";
+import { authWare } from "./utils/middleware/auth";
 
 const app = new Koa();
 const staticPath = path.resolve(__dirname, "../public");
 app.use(serve(staticPath));
+
+app.use(authWare);
 
 app.use(bodyParser({}));
 
