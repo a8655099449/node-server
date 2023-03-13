@@ -77,8 +77,24 @@ userRouter.get("/status", async (ctx) => {
 });
 
 userRouter.get("/list", async (ctx) => {
+  const query: any = ctx.query;
+  const { page = 1, pageSize = 10, name =''} = query;
 
+  const users = await User.paginate<User>(Number(page), Number(pageSize), {
+    wheres: [
+      {
+        key: "name",
+        type: "like",
+        value: name,
+      },
+    ],
+  });
 
+  users.items = users.items.map((item) => item.toApi()) as any;
+
+  successResponse(ctx, {
+    data: users,
+  });
 });
 
 export default userRouter;

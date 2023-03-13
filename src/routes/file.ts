@@ -6,7 +6,8 @@ import path from "path";
 
 fileRouter.post(
   "/upload",
-  koaBody({
+
+koaBody({
     multipart: true, // 允许上传文件
     formidable: {
       maxFileSize: 10 * 1024 * 1024,
