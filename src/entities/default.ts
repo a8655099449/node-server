@@ -23,7 +23,7 @@ export abstract class DefaultColumn {
       {
         skip: pageSize * (page - 1),
         take: pageSize,
-        ...options,
+        ...options as any,
       }
     );
 
@@ -31,12 +31,10 @@ export abstract class DefaultColumn {
 
     return {
       items,
-      meta: {
-        total,
-        page,
-        pageSize,
-        totalPages,
-      },
+      total,
+      page,
+      pageSize,
+      totalPages,
     };
   }
 }
